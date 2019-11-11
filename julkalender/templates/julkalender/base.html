@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D-sektionens julkalender {{ year }}</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'julkalender/style.css' %}" />
+  </head>
+
+  <body>
+    <div class="christmasline"></div>
+    <canvas id="snowfall"></canvas>
+    <button id="mute-button" style="float:left">
+      <img src="{% static 'julkalender/img/mute-button.png' %}" alt="Mute" height="20" />
+    </button>
+
+    {% block content %}{% endblock content %}
+
+    <script src="{% static 'julkalender/js/snowfall.js' %}"></script>
+    <script src="{% static 'julkalender/js/jquery.min.js' %}"></script>
+    <script src="{% static 'julkalender/js/jquery.imagemapster.min.js' %}"></script>
+    <script src="{% static 'julkalender/js/main.js' %}"></script>
+    <script src="{% static 'julkalender/js/mapImg.js' %}"></script>
+    <script src="{% static 'julkalender/js/music.js' %}"></script>
+  </body>
+</html>

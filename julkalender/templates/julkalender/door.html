@@ -1,0 +1,10 @@
+{% extends "julkalender/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div id="main">
+        <p>{{door.text}}</p>
+        <img src="{{door.image.url}}">
+    </div>
+{% endblock content %}

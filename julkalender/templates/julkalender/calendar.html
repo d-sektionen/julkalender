@@ -1,0 +1,67 @@
+{% extends "julkalender/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <a href="https://d-sektionen.se/">
+      <img src="{% static 'julkalender/img/Color_black.png' %}" alt="D-sektionen" width="800" />
+    </a>
+    <div id="main">
+      <map id="luckor" name="luckor">
+        {% for door in doors %}
+          <area
+          class="area"
+          shape="{{ door.shape }}"
+          data-group="{{ door.shape }}{{ forloop.counter }}"
+          alt="Lucka {{ forloop.counter }}"
+          href="{% url 'door' year forloop.counter %}"
+          onclick="window.location.href='{% url 'door' year forloop.counter %}'"
+          coords="{{ door.coords }}"
+        />
+        {% endfor %}
+      </map>
+
+      <div id="granen">
+        <img
+          class="image"
+          src="{% static 'julkalender/img/gran01.gif' %}"
+          onclick="createImg('g');"
+          alt="MER JUL!"
+        />
+      </div>
+      <div id="calendar">
+        <div id="calendar_overlay">
+          <img
+            class="image"
+            id="kalender"
+            width="1024"
+            height="768"
+            src="{% static 'julkalender/img/overlay.png' %}"
+            alt="D-sektionens julkalender"
+            usemap="#luckor"
+          />
+        </div>
+      </div>
+      <div id="tomten">
+        <img
+          class="image"
+          src="{% static 'julkalender/img/tomte01.gif' %}"
+          onclick="createImg('t');"
+          alt="MEEEEER JUL!"
+        />
+      </div>
+
+      <br />
+
+      <div id="kringel">
+        <img
+          style="border:0;"
+          width="464"
+          height="215"
+          src="{% static 'julkalender/img/kringel.png' %}"
+          alt="Kringel"
+        />
+      </div>
+      <a class="link" href="{% url 'about' %}">Om julkalendern</a>
+    </div>
+{% endblock content %}

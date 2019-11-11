@@ -1,0 +1,149 @@
+@font-face {
+  font-family: staben_font;
+  src: url("../fonts/Rocky.ttf"), url("../fonts/Rocky.eot"); /*IE 9*/
+}
+
+.stabenfont {
+  font-family: "staben_font", serif;
+  font-size: 150%;
+  text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+  font-weight: 100;
+  color: #e23828;
+}
+
+body {
+  background-image: url("img/black-bg.gif");
+  text-align: center;
+  color: #fff;
+  margin: 0;
+}
+
+img {
+  border: none;
+}
+
+a:link {
+  color: #e23828;
+} /* unvisited link */
+a:visited {
+  color: #bf0827;
+} /* visited link */
+a:hover {
+  color: #bf0827;
+} /* mouse over link */
+a:active {
+  color: #bf0827;
+} /* selected link */
+
+#snowfall {
+  z-index: 100;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#main {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1310px;
+  height: 768px;
+}
+map {
+  display: none;
+}
+.area {
+  border: #fff 1px solid;
+}
+
+#kringel {
+  margin-bottom: -150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tomten {
+  float: right;
+  margin-top: 334px;
+}
+
+@keyframes spin2win {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.image2 {
+  position: absolute;
+  background-size: 100%;
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  animation: spin2win 1s infinite;
+}
+
+#granen {
+  float: left;
+  margin-right: 20px;
+  margin-top: 225px;
+}
+
+#calendar {
+  /*margin-top:10px;*/
+  background: transparent url("img/background.jpg") no-repeat;
+  border: none;
+  float: left;
+}
+
+#calendar_overlay {
+  background: transparent url("img/luckor.png") no-repeat;
+}
+
+.link {
+  margin-top: 10px;
+}
+
+.staben_img {
+  vertical-align: middle;
+}
+
+.sok_staben {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 18px;
+}
+
+.viktiga_ord {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  border: none;
+  font: normal 48px / normal "Warnes", Helvetica, sans-serif;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: normal;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de,
+    0 0 80px #ff00de, 0 0 100px #ff00de;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.christmasline {
+  height: 15px;
+  background-image: url("img/christmasline.gif");
+}
