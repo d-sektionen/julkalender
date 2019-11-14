@@ -3,7 +3,7 @@ from django.utils.crypto import get_random_string
 import os
 
 def update_filename(instance, filename):
-    path = "content/"
+    path = "doorcontent/"
     randomfolder = get_random_string(length=24)
     return os.path.join(path, randomfolder, filename)
 

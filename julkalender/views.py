@@ -1,92 +1,58 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response
 from django.http import HttpResponse
+import datetime
 
 from .models import Door
+from .doors import doors
+from .embed import get_cached_embed
 
-def calendar(request, year=2019):
-  doors = [
-    {
-      "shape": "rect",          
-      "coords": "921,672,966,716",
-    }, {
-      "shape": "circle",          
-      "coords": "300,56,30",
-    }, {
-      "shape": "rect",          
-      "coords": "540,518,585,562",
-    }, {
-      "shape": "rect",          
-      "coords": "922,44,967,88",
-    }, {
-      "shape": "circle",          
-      "coords": "235,644,30",
-    }, {
-      "shape": "rect",          
-      "coords": "103,56,148,100",
-    }, {
-      "shape": "rect",          
-      "coords": "62,685,107,729",
-    }, {
-      "shape": "rect",          
-      "coords": "699,178,744,222",
-    }, {
-      "shape": "rect",          
-      "coords": "277,505,322,549",
-    }, {
-      "shape": "circle",          
-      "coords": "984,348,30",
-    }, {
-      "shape": "circle",          
-      "coords": "105,439,30",
-    }, {
-      "shape": "rect",          
-      "coords": "413,122,458,166",
-    }, {
-      "shape": "circle",          
-      "coords": "808,478,30",
-    }, {
-      "shape": "circle",          
-      "coords": "163,250,30",
-    }, {
-      "shape": "rect",          
-      "coords": "915,423,960,467",
-    }, {
-      "shape": "rect",          
-      "coords": "741,34,786,78",
-    }, {
-      "shape": "rect",          
-      "coords": "33,143,78,187",
-    }, {
-      "shape": "rect",          
-      "coords": "752,593,797,637",
-    }, {
-      "shape": "rect",          
-      "coords": "699,304,744,348",
-    }, {
-      "shape": "circle",          
-      "coords": "373,380,30",
-    }, {
-      "shape": "rect",          
-      "coords": "540,308,585,352",
-    }, {
-      "shape": "circle",          
-      "coords": "594,186,30",
-    }, {
-      "shape": "rect",          
-      "coords": "472,650,517,694",
-    }, {
-      "shape": "poly",          
-      "coords": "523,6,541,38,576,46,552,69,555,106,523,91,490,106,496,72,471,45,507,38",
-    }
-  ] 
+def _get_year():
+  """
+  Get the default year to display, current year in december, else the previous year.
+  """
+  x = datetime.datetime.now()
+  return x.year if x >= datetime.datetime(x.year, 12, 1) else x.year - 1
 
-  return render(request, 'julkalender/calendar.html', {"year": year, "doors": doors})
 
-def door(request, year=2019, day=0):
-  door = get_object_or_404(Door, year=2019, day=day)
+def calendar(request, year=None):
+  if not year:
+    year = _get_year()
 
-  return render(request, "julkalender/door.html", {"door": door})
-  return HttpResponse(f"Hello, world. You're at the door view for door {day}. the year is: {year}")
+  now = datetime.datetime.now()
+  # now = datetime.datetime(2019, 12, 20) # for testing
+  first_day = datetime.datetime(year, 12, 1)
+  last_day = datetime.datetime(year, 12, 24)
+  if last_day <= now:
+    days_open = 24
+  elif first_day > now:
+    days_open = 0
+  else:
+    days_open = now.day
+
+  return render(request, 'julkalender/calendar.html', {"year": year, "doors": doors[0:days_open]})
+
+def door(request, year=None, day=0):
+  if not year:
+    year = _get_year()
+    
+  logged_in = request.user and request.user.is_authenticated
+
+  now = datetime.datetime.now()
+  # now = datetime.datetime(2019, 12, 20) # for testing
+  if datetime.datetime(year, 12, day) > now and not logged_in:
+    return HttpResponse(f"forbidden lucka broor")
+
+  door = get_object_or_404(Door, year=year, day=day)
+
+  embed = get_cached_embed(door.embed_url) if door.embed_url else None
+
+  return render(request, "julkalender/door.html", {"door": door, "logged_in": logged_in, "embed": embed })
+  
 
 def about(request):
   return render(request, 'julkalender/about.html')
+
+def handler404(request, exception, template_name="julkalender/404.html"):
+    response = render_to_response("julkalender/404.html")
+    response.status_code = 404
+    return response

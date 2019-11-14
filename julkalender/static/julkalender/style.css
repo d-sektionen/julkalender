@@ -147,3 +147,13 @@ map {
   height: 15px;
   background-image: url("img/christmasline.gif");
 }
+
+.embed {
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+}
+.embed > * {
+  height: 100%;
+  width: 100%;
+}

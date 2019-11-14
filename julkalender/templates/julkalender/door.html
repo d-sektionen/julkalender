@@ -4,7 +4,19 @@
 
 {% block content %}
     <div id="main">
-        <p>{{door.text}}</p>
-        <img src="{{door.image.url}}">
+        {% if door.text %}
+            <p>{{door.text}}</p>
+        {% endif %}
+        {% if door.image %}
+            <img src="{{door.image.url}}">
+        {% endif %}
+        {% if embed %}
+            <div class="embed">
+                {{ embed |safe }}
+            </div>
+        {% endif %}
+        {% if logged_in %}
+            <p>Du är inloggad och kan därmed se denna sida i förväg.</p>
+        {% endif %}
     </div>
 {% endblock content %}

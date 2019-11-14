@@ -1,0 +1,17 @@
+{% extends "julkalender/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div id="main">
+      <h1 class="rubrik">Sidan hittades inte!</h1>
+      <img
+          src="{% static 'julkalender/img/error404.gif' %}"
+          alt="404 error"/>
+      <br>
+      <img
+          src="{% static 'julkalender/img/error404computer.gif' %}"
+          alt=""/>
+    </div>
+
+{% endblock content %}
