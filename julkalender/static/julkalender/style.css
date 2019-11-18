@@ -13,9 +13,11 @@
 
 body {
   background-image: url("img/black-bg.gif");
-  text-align: center;
   color: #fff;
   margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 100vw;
 }
 
 img {
@@ -38,7 +40,7 @@ a:active {
 #snowfall {
   z-index: 100;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -48,28 +50,45 @@ a:active {
 }
 
 #main {
-  margin: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1310px;
-  height: 768px;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	margin: auto;
 }
+
+#calendar-container {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+#about-text {
+	display: flex;
+	flex-direction: column;
+	min-width: 400px;
+	max-width: 700px;
+}
+
+#about-text li {
+	margin-bottom: 15px;
+}
+
+.cert-container {
+	display: flex;
+}
+
+.door-image {
+	max-width: 100%;
+}
+
 map {
   display: none;
 }
+
 .area {
   border: #fff 1px solid;
-}
-
-#kringel {
-  margin-bottom: -150px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#tomten {
-  float: right;
-  margin-top: 334px;
 }
 
 @keyframes spin2win {
@@ -90,25 +109,24 @@ map {
   animation: spin2win 1s infinite;
 }
 
-#granen {
-  float: left;
-  margin-right: 20px;
-  margin-top: 225px;
-}
-
 #calendar {
-  /*margin-top:10px;*/
   background: transparent url("img/background.jpg") no-repeat;
   border: none;
-  float: left;
 }
 
 #calendar_overlay {
   background: transparent url("img/luckor.png") no-repeat;
 }
 
+#mute-button {
+	position: fixed;
+	top: 25px;
+	left: 8px;
+}
+
 .link {
-  margin-top: 10px;
+	align-self: center;
+	transform: translateY(-200px);
 }
 
 .staben_img {
@@ -145,6 +163,7 @@ map {
 
 .christmasline {
   height: 15px;
+  width: 100%;
   background-image: url("img/christmasline.gif");
 }
 
