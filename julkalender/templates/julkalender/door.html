@@ -3,12 +3,12 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div id="main">
+    <div id="door-main">
         {% if door.text %}
             <p>{{door.text}}</p>
         {% endif %}
         {% if door.image %}
-            <img src="{{door.image.url}}">
+            <img class="door-image" src="{{door.image.url}}">
         {% endif %}
         {% if embed %}
             <div class="embed">

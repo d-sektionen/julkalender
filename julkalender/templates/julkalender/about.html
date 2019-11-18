@@ -4,54 +4,60 @@
 
 {% block content %}
     <div id="main">
-      <h1 class="rubrik">Om julkalendern</h1>
-      <p>
-        Julkalendern 2011 har tagits fram av:
-        <br />
-        Alexander Widerberg, D3
-        <br />
-        Bakgrundsbild fotad av: Mikael Rothin.
-      </p>
-      <p>
-        Julkalendern 2012 är miljömedvetet återvunnen från denna och
-        sammanställd av Jens Nilsson Sahlin, D1.
-      </p>
-      <p>
-        Julkalendern 2014 ligger på samma gamla stabila server hos CYD-poolen
-        men det finns risk att stabiliteten avtar.
-      </p>
-      <p>
-        Julkalendern 2015 är för första gången revisionshanterad och är
-        smakfullt uppiffad utan att för den delen gå ifrån den tidslösa
-        designen.
-      </p>
-      <p>
-        Julkalendern 2016 är designad kring nyckelorden interaktivitet,
-        kreativitet och ansvarsfirhet. Men det var mest för alliterationens
-        skull.
-      </p>
-      <p>
-        Julkalendern 2018 togs storslaget fram med fokus på att bevara
-        kulturavet i den eleganta och simpla designen, sammanställd av Angus
-        Lothian och Mattias Johansson med god hjälp från Jesper Wrang.
-      </p>
-      <p>
-        Först och främst vill vi i Info/Webb-utskottet tacka alla som varit med
-        och bidragit med material till luckorna.<br />
-        Självklart vill vi även tacka tomten för sitt finfina jobb med alla
-        klappar!
-      </p>
-      <hr />
-      <a href="https://validator.w3.org/nu/?doc=https://d-sektionen.se/jul/">
-        <img src="{% static 'julkalender/img/html3.svg' %}" height="32" alt="Validerad HTML3"/>
-      </a>
-      <br />
-      <a href="http://home.mcom.com/home/welcome.html"
-        ><img
-          src="{% static 'julkalender/img/netscape.gif' %}"
-          height="31"
-          alt="getting started with Netscape "/></a
-      ><br />
+	  <h1 class="rubrik">Om julkalendern</h1>
+		<ul id="about-text">
+		  <li>
+			Julkalendern 2011 har tagits fram av:
+			Alexander Widerberg, D3
+			Bakgrundsbild fotad av: Mikael Rothin.
+		  </li>
+		  <li>
+			Julkalendern 2012 är miljömedvetet återvunnen från denna och
+			sammanställd av Jens Nilsson Sahlin, D1.
+		  </li>
+		  <li>
+			Julkalendern 2014 ligger på samma gamla stabila server hos CYD-poolen
+			men det finns risk att stabiliteten avtar.
+		  </li>
+		  <li>
+			Julkalendern 2015 är för första gången revisionshanterad och är
+			smakfullt uppiffad utan att för den delen gå ifrån den tidslösa
+			designen.
+		  </li>
+		  <li>
+			Julkalendern 2016 är designad kring nyckelorden interaktivitet,
+			kreativitet och ansvarsfrihet. Men det var mest för alliterationens
+			skull.
+		  </li>
+		  <li>
+			Julkalendern 2018 togs storslaget fram med fokus på att bevara
+			kulturarvet i den eleganta och simpla designen, sammanställd av Angus
+			Lothian och Mattias Johansson med god hjälp från Jesper Wrang.
+		  </li>
+		  <li>
+			  Med julkalendern 2019 skedde stora förändringar "under huven" för att
+			  underlätta för kommande generationers jobb på hemsidan.
+		  </li>
+		  <li>
+			Först och främst vill vi i Info/Webb-utskottet tacka alla som varit med
+			och bidragit med material till luckorna.
+			Självklart vill vi även tacka tomten för sitt finfina jobb med alla
+			klappar!
+		  </li>
+		</ul>
+		  <div class="cert-container">
+			  <a href="https://validator.w3.org/nu/?doc=https://d-sektionen.se/jul/">
+				<img src="{% static 'julkalender/img/html3.svg' %}" height="32" alt="Validerad HTML3"/>
+			  </a>
+			  <br />
+			  <a href="http://home.mcom.com/home/welcome.html">
+				<img
+				  src="{% static 'julkalender/img/netscape.gif' %}"
+				  height="31"
+				  alt="getting started with Netscape "
+				/>
+			  </a>
+		  </div>
     </div>
 
 {% endblock content %}
