@@ -79,8 +79,18 @@ a:active {
 	display: flex;
 }
 
+#door-main {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	max-width: 1000px;
+	align-self: center;
+}
+
 .door-image {
-	max-width: 100%;
+	max-width: 95vw;
+	max-height: 85vh;
+	align-self: flex-start;
 }
 
 map {

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, render_to_response
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 import datetime
 
 from .models import Door
@@ -40,7 +40,7 @@ def door(request, year=None, day=0):
   now = datetime.datetime.now()
   # now = datetime.datetime(2019, 12, 20) # for testing
   if datetime.datetime(year, 12, day) > now and not logged_in:
-    return HttpResponse(f"forbidden lucka broor")
+    raise Http404
 
   door = get_object_or_404(Door, year=year, day=day)
 
