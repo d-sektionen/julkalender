@@ -38,7 +38,9 @@ function createImg($type) {
       "gran02.gif",
       "gran03.gif",
       "gran04.gif",
-      "gran05.gif"
+      "gran05.gif",
+      "gran06.gif",
+      "gran07.gif"
     ];
   }
 
