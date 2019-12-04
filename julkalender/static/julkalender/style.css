@@ -83,7 +83,6 @@ a:active {
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
-	max-width: 1000px;
 	align-self: center;
 }
 
