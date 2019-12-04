@@ -114,6 +114,7 @@ map {
   background-size: 100%;
   width: 100px;
   height: 100px;
+  overflow: hidden;
   background-repeat: no-repeat;
   animation: spin2win 1s infinite;
 }

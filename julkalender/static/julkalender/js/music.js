@@ -37,7 +37,11 @@ if (localStorage.getItem("hasCodeRunBefore") === null) {
 }
 */
 
-document.body.appendChild(ytplayer)
+let testElement = document.getElementById("door-main")
+
+if (testElement == 'undefined' || testElement == null)  {
+	document.body.appendChild(ytplayer)
+}
 
 // if mute-button clicked
 document.getElementById("mute-button").onclick = function () { 

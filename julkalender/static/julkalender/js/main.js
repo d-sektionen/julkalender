@@ -46,7 +46,7 @@ function createImg($type) {
 
   var randImg = Math.floor(Math.random() * images.length);
   var randX = Math.floor(Math.random() * (window.innerWidth - 100));
-  var randY = Math.floor(Math.random() * (window.innerHeight - 100));
+  var randY = Math.floor(Math.random() * (document.body.scrollHeight - 100));
 
   const im = document.createElement("div");
   im.className = "image2";
