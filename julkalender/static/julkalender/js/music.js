@@ -1,17 +1,12 @@
 // Christmas songs from youtube
 var songs = [
-  "q_F9Nrs7ODQ", 
- // "Vz78r_EMAEo",
- // "yXQViqx6GMY",
- // "E8gmARGvPlI",
- // "RTtc2pM1boE",
- //  "tbbKjDjMDok",
-  "oKlBc66ytnc",
- // "UVj9gPcCP1s",
+  "q_F9Nrs7ODQ",
+  "yXQViqx6GMY",
+  "E8gmARGvPlI",
+  "RTtc2pM1boE",
   "aBkTkxKDduc",
-  "I-sH53vXP2A", 
+  "I-sH53vXP2A",
   "vOoWAmoA6B4",
-  "yTtoBuIpbRE",
   "IAQs7i8lVwU",
   "173uCQT4J9s",
   "0bWJciHHUQY"
@@ -26,7 +21,7 @@ ytplayer.style.display = 'none'
 ytplayer.src = 'https://www.youtube.com/embed/' + songs[randomSong] + '?enablejsapi=1&autoplay=1'
 
 // Make autoplay of music on chrome workaround
-ytplayer.allow = "autoplay" 
+ytplayer.allow = "autoplay"
 /*
 if (localStorage.getItem("hasCodeRunBefore") === null) {
         var chrome   = navigator.userAgent.indexOf('Chrome') > -1;
@@ -37,13 +32,13 @@ if (localStorage.getItem("hasCodeRunBefore") === null) {
 }
 */
 
-let testElement = document.getElementById("door-main")
+let testElement = document.getElementById("door-main");
 
 if (testElement == 'undefined' || testElement == null)  {
 	document.body.appendChild(ytplayer)
 }
 
 // if mute-button clicked
-document.getElementById("mute-button").onclick = function () { 
+document.getElementById("mute-button").onclick = function () {
   ytplayer.remove();
 }

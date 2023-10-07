@@ -61,6 +61,8 @@ TEMPLATES = [
     },
 ]
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 WSGI_APPLICATION = 'app.wsgi.application'
 
 # Password validation
@@ -90,8 +92,6 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = "Europe/Stockholm"
 
 USE_I18N = True
-
-USE_L10N = True
 
 USE_TZ = True
 
