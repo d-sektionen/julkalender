@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 import datetime
 
@@ -19,7 +19,7 @@ def calendar(request, year=None):
     year = _get_year()
 
   now = datetime.datetime.now()
-  # now = datetime.datetime(2019, 12, 20) # for testing
+  #now = datetime.datetime(2019, 12, 20) # for testing
   first_day = datetime.datetime(year, 12, 1)
   last_day = datetime.datetime(year, 12, 24)
   if last_day <= now:
@@ -53,6 +53,6 @@ def about(request):
   return render(request, 'julkalender/about.html')
 
 def handler404(request, exception, template_name="julkalender/404.html"):
-    response = render_to_response("julkalender/404.html")
+    response = render(404, "julkalender/404.html")
     response.status_code = 404
     return response
