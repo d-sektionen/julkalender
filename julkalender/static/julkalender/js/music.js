@@ -9,7 +9,8 @@ var songs = [
   "vOoWAmoA6B4",
   "IAQs7i8lVwU",
   "173uCQT4J9s",
-  "0bWJciHHUQY"
+  "0bWJciHHUQY",
+  "CR4wkM2JYtY"
 ];
 
 var randomSong = Math.floor(Math.random() * songs.length);
@@ -35,7 +36,8 @@ function onYouTubeIframeAPIReady() {
       'controls': 0
     },
     events: {
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      'onAutoplayBlocked': onAutoplayBlocked
     }
   });
 }
@@ -43,6 +45,11 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   event.target.playVideo();
+}
+
+function onAutoplayBlocked(event) {
+  console.log("Auto")
+  //event.target.playVideo();
 }
 
 // Old player
@@ -73,6 +80,10 @@ if (testElement == 'undefined' || testElement == null)  {
 }
 
 // if mute-button clicked
-document.getElementById("mute-button").onclick = function () {
-  player.remove();
+function mute() {
+  if (player.getPlayerState() == YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
 }
