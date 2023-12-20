@@ -90,6 +90,18 @@ a:active {
 	max-width: 95vw;
 	max-height: 85vh;
 	align-self: flex-start;
+  padding: 1em;
+}
+
+#door-info {
+  text-align: center;
+  margin-top: 2vh;
+  border: #fff 1px dotted;
+}
+
+#door-contributor {
+  margin-top: 2vh;
+  text-align: center;
 }
 
 map {
@@ -181,6 +193,7 @@ map {
   width: 80vw;
   height: 80vh;
   margin: auto;
+  padding: 1em;
 }
 .embed > * {
   height: 100%;

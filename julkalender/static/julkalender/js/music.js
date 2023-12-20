@@ -24,15 +24,16 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
+  console.log("Started playing https://www.youtube.com/watch?v=" + songs[randomSong]);
   player = new YT.Player('player', {
     height: '0',
     width: '0',
     videoId: songs[randomSong],
     playerVars: {
       'playsinline': 1,
-      'autoplay': 1,
+      'autoplay': 0,
       'loop': 1,
-      'enablejsapi': 0,
+      'enablejsapi': 1,
       'controls': 0
     },
     events: {
@@ -44,12 +45,15 @@ function onYouTubeIframeAPIReady() {
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  event.target.playVideo();
+  setTimeout(function() {
+    event.target.playVideo();
+  }, 1000);
 }
 
 function onAutoplayBlocked(event) {
-  console.log("Auto")
-  //event.target.playVideo();
+  setTimeout(function() {
+    event.target.playVideo();
+  }, 1000);
 }
 
 // Old player
@@ -73,11 +77,13 @@ if (localStorage.getItem("hasCodeRunBefore") === null) {
 }
 */
 
+/*
 let testElement = document.getElementById("door-main");
 
 if (testElement == 'undefined' || testElement == null)  {
 	document.body.appendChild(player)
 }
+*/
 
 // if mute-button clicked
 function mute() {
@@ -86,4 +92,14 @@ function mute() {
   } else {
     player.playVideo();
   }
+}
+
+function playMusic() {
+  player.playVideo();
+}
+
+function pauseMusic() {
+  setTimeout(function() {
+    player.pauseVideo();
+  }, 1000);
 }

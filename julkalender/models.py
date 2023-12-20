@@ -2,6 +2,11 @@ from django.db import models
 from django.utils.crypto import get_random_string
 import os
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+from app.settings_shared import MEDIA_ROOT
+
 def update_filename(instance, filename):
     path = "doorcontent/"
     randomfolder = get_random_string(length=24)
@@ -22,3 +27,12 @@ class Door(models.Model):
 
     class Meta:
       unique_together = (("year", "day"),)
+
+@receiver(post_save, sender=Door)
+def deleting_old_image(sender, instance, **kwargs):
+    for root, dirs, files in os.walk(os.path.join(MEDIA_ROOT, "doorcontent")):
+        for d in dirs:
+            dir = os.path.join(root, d)
+            # check if dir is empty
+            if not os.listdir(dir):
+                os.rmdir(dir)

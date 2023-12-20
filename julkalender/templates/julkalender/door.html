@@ -4,19 +4,30 @@
 
 {% block content %}
     <div id="door-main">
-        {% if door.text %}
-            <p>{{door.text}}</p>
-        {% endif %}
-        {% if door.image %}
-            <img class="door-image" src="{{door.image.url}}">
-        {% endif %}
-        {% if embed %}
-            <div class="embed">
-                {{ embed |safe }}
-            </div>
-        {% endif %}
+        <div id="door-info">
+            {% if door.text %}
+                <p id="door-title">{{door.text}}</p>
+            {% endif %}
+            {% if door.contributor%}
+                <p id="door-contributor">Av {{door.contributor}}</p>
+            {% endif %}
+            {% if door.image %}
+                <img class="door-image" src="{{door.image.url}}">
+            {% endif %}
+            {% if embed %}
+                <div class="embed">
+                    {{ embed |safe }}
+                </div>
+            {% endif %}
+        </div>
         {% if logged_in %}
             <p>Du är inloggad och kan därmed se denna sida i förväg.</p>
         {% endif %}
     </div>
+    <script>
+        window.load = function() {
+            var player = document.getElementById("player");
+            player.pauseMusic();
+        }
+    </script>
 {% endblock content %}
