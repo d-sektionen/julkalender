@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     "julkalender",
 
     'django_cleanup.apps.CleanupConfig',
+    'django_unused_media',
+    'dbbackup',  # django-dbbackup
 
     'django.contrib.admin',
     'django.contrib.auth',
