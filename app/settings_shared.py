@@ -25,6 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INSTALLED_APPS = [
     "julkalender",
 
+    'django_cleanup.apps.CleanupConfig',
+    'django_unused_media',
+    'dbbackup',  # django-dbbackup
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

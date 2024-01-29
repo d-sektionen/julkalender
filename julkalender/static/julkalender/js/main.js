@@ -21,6 +21,8 @@ $("body").on("dblclick", function() {
 });
 
 function createImg($type) {
+  playMusic();
+
   var images;
 
   if ($type == "t") {

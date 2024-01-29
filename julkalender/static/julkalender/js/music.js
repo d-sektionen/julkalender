@@ -9,7 +9,8 @@ var songs = [
   "vOoWAmoA6B4",
   "IAQs7i8lVwU",
   "173uCQT4J9s",
-  "0bWJciHHUQY"
+  "0bWJciHHUQY",
+  "CR4wkM2JYtY"
 ];
 
 var randomSong = Math.floor(Math.random() * songs.length);
@@ -23,26 +24,36 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
+  console.log("Started playing https://www.youtube.com/watch?v=" + songs[randomSong]);
   player = new YT.Player('player', {
     height: '0',
     width: '0',
     videoId: songs[randomSong],
     playerVars: {
       'playsinline': 1,
-      'autoplay': 1,
+      'autoplay': 0,
       'loop': 1,
-      'enablejsapi': 0,
+      'enablejsapi': 1,
       'controls': 0
     },
     events: {
-      'onReady': onPlayerReady
+      'onReady': onPlayerReady,
+      'onAutoplayBlocked': onAutoplayBlocked
     }
   });
 }
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
-  event.target.playVideo();
+  setTimeout(function() {
+    event.target.playVideo();
+  }, 1000);
+}
+
+function onAutoplayBlocked(event) {
+  setTimeout(function() {
+    event.target.playVideo();
+  }, 1000);
 }
 
 // Old player
@@ -66,13 +77,29 @@ if (localStorage.getItem("hasCodeRunBefore") === null) {
 }
 */
 
+/*
 let testElement = document.getElementById("door-main");
 
 if (testElement == 'undefined' || testElement == null)  {
 	document.body.appendChild(player)
 }
+*/
 
 // if mute-button clicked
-document.getElementById("mute-button").onclick = function () {
-  player.remove();
+function mute() {
+  if (player.getPlayerState() == YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
+}
+
+function playMusic() {
+  player.playVideo();
+}
+
+function pauseMusic() {
+  setTimeout(function() {
+    player.pauseVideo();
+  }, 1000);
 }
