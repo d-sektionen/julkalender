@@ -16,4 +16,4 @@ DATABASES = {
 }
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': 'C:/Users/ollem/Documents/Programmering/d-sektionen/backup'}
+DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backup')}
