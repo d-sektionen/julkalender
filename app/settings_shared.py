@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'django_unused_media',
     'dbbackup',  # django-dbbackup
+    'django_cron',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CRON_CLASSES = [
+    "julkalender.models.Backup",
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -108,3 +113,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # 'data' is my media folder
 MEDIA_URL = '/media/'
+
+BACKUP_DIR = os.path.join(BASE_DIR, 'backup/')
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': BACKUP_DIR}

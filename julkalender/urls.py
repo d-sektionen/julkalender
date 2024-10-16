@@ -3,7 +3,7 @@ from django.urls import include, path
 from . import views
 
 year_urls = [
-      path('', views.calendar),
+      path('', views.calendar, name='calendar'),
       path('door/<int:day>', views.door, name='door'),
     ]
 

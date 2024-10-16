@@ -14,6 +14,3 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': 'C:/Users/ollem/Documents/Programmering/d-sektionen/backup'}

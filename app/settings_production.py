@@ -1,4 +1,3 @@
-import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 from app.settings_shared import *
@@ -11,9 +10,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.d-sektionen.se', '.dsektionen.se', 
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=500)
 }
-
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': '/backup/julkalender'}
 
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True

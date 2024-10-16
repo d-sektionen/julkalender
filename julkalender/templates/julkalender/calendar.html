@@ -62,4 +62,11 @@
 		</div>
 	</div>
 	<a class="link" href="{% url 'about' %}">Om julkalendern</a>
+	<ul id="past_years">
+		{% for past_year in past_years reversed %}
+		<li>
+				<a class="link" href="{% url 'calendar' past_year %}">{{ past_year }}</a>
+		</li>
+		{% endfor %}
+	</ul>
 {% endblock content %}

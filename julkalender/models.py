@@ -1,11 +1,17 @@
-from django.db import models
+from django.db import models, connection, transaction
 from django.utils.crypto import get_random_string
 import os
+from django_cron import CronJobBase, Schedule
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from app.settings_shared import MEDIA_ROOT
+from django.core import management
+
+from app.settings_shared import MEDIA_ROOT, BACKUP_DIR
+import logging
+
+logger = logging.getLogger(__name__)
 
 def update_filename(instance, filename):
     path = "doorcontent/"
@@ -36,3 +42,21 @@ def deleting_old_image(sender, instance, **kwargs):
             # check if dir is empty
             if not os.listdir(dir):
                 os.rmdir(dir)
+
+class Backup(CronJobBase):
+    RUN_AT_TIMES = ['04:30']
+    schedule = Schedule(run_at_times=RUN_AT_TIMES)
+    code = 'julkalender.Backup'
+
+    def do(self):
+        backup_dir = BACKUP_DIR
+        if os.path.exists(backup_dir):
+            backups = sorted(
+                [os.path.join(backup_dir, f) for f in os.listdir(backup_dir) if os.path.isfile(os.path.join(backup_dir, f))],
+                key=os.path.getctime
+            )
+            if len(backups) > 10:
+                os.remove(backups[0])
+        print("Backup started")
+        management.call_command('dbbackup')
+        management.call_command('mediabackup')
