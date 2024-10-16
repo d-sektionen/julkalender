@@ -35,8 +35,4 @@ EXPOSE 8000
 # Switch to a non-root user
 USER ${UID}:${GID}
 
-# Run migration
-RUN chmod +x docker-entrypoint.sh
-
-# Define the command to run the Django app
-#CMD python manage.py runserver 127.0.0.1:8000
+ENTRYPOINT [ "sh", "/code/docker-entrypoint.sh"]

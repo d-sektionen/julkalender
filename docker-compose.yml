@@ -3,8 +3,7 @@ services:
     container_name: D-Sektionen-Julkalender
     image: registry.d-sektionen.se/julkalender:latest
     restart: unless-stopped
-    entrypoint: /code/docker-entrypoint.sh
-    command: uwsgi --ini /code/julkalender.uwsgi.ini
+    command: uwsgi --ini /etc/uwsgi/julkalender.uwsgi.ini
     volumes:
       # Set the paths when deploying to production.
       - ${JULKALENDER_BASEDIR}/julkalender.uwsgi.ini:/etc/uwsgi/julkalender.uwsgi.ini
