@@ -18,6 +18,10 @@ def calendar(request, year=None):
   if not year:
     year = _get_year()
 
+  # Get all years with doors, except the current year
+  past_years = Door.objects.values_list('year', flat=True).distinct()
+  past_years = [y for y in past_years if y <= _get_year()]
+
   now = datetime.datetime.now()
   #now = datetime.datetime(2019, 12, 20) # for testing
   first_day = datetime.datetime(year, 12, 1)
@@ -29,7 +33,7 @@ def calendar(request, year=None):
   else:
     days_open = now.day
 
-  return render(request, 'julkalender/calendar.html', {"year": year, "doors": doors[0:days_open]})
+  return render(request, 'julkalender/calendar.html', {"year": year, "past_years": past_years, "doors": doors[0:days_open]})
 
 def door(request, year=None, day=0):
   if not year:
