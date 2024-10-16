@@ -5,3 +5,4 @@ python-dotenv==1.0.0
 django-cleanup==8.0.0
 django-dbbackup==4.0.2
 django-unused-media==0.2.2
+django_cron==0.6.0
