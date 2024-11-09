@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'django_unused_media',
     'dbbackup',  # django-dbbackup
-    'django_cron',
+    #'django_cron',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,9 +48,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CRON_CLASSES = [
-    "julkalender.models.Backup",
-]
+#CRON_CLASSES = [
+#    "julkalender.models.Backup",
+#]
 
 ROOT_URLCONF = 'app.urls'
 
