@@ -6,8 +6,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 
-#ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.d-sektionen.se', '.dsektionen.se', '.datateknologsektionen.se']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.d-sektionen.se', '.dsektionen.se', '.datateknologsektionen.se']
 
 DATABASES = {
     "default": {
