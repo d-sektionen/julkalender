@@ -10,7 +10,8 @@ var songs = [
   "IAQs7i8lVwU",
   "173uCQT4J9s",
   "0bWJciHHUQY",
-  "CR4wkM2JYtY"
+  "CR4wkM2JYtY",
+  "qvEIo72Fn78"
 ];
 
 var randomSong = Math.floor(Math.random() * songs.length);

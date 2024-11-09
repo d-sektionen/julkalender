@@ -21,6 +21,7 @@ def calendar(request, year=None):
   # Get all years with doors, except the current year
   past_years = Door.objects.values_list('year', flat=True).distinct()
   past_years = [y for y in past_years if y <= _get_year()]
+  past_years.sort(reverse=True)
 
   now = datetime.datetime.now()
   #now = datetime.datetime(2019, 12, 20) # for testing
