@@ -1,0 +1,13 @@
+Dockerfile
+*.sqlite3
+*.env
+*.ini
+*.yml
+media/
+log/
+static/
+.vscode/
+.venv/
+__pycache__/
+.gihub/
+.gitignore

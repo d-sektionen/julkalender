@@ -5,7 +5,9 @@ from app.settings_shared import *
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.d-sektionen.se', '.dsektionen.se', '.datateknologsektionen.se']
+
+#ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.d-sektionen.se', '.dsektionen.se', '.datateknologsektionen.se']
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     "default": {
@@ -23,9 +25,19 @@ SECURE_BROWSER_XSS_FILTER = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
-    ]
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Log errors to console
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": os.getenv("DJANGO_LOG_LEVEL", "INFO"),
+        },
+    },
+}
