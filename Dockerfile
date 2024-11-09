@@ -14,7 +14,7 @@ COPY requirements.txt ./
 
 # Install build tools and project dependencies, remove tools and cache after.
 RUN apt update && apt upgrade -y && \
-    apt install gcc musl-dev -y && \
+    apt install gcc musl-dev libpcre3 libpcre3-dev -y && \
     pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     apt clean autoclean && \
