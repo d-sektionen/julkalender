@@ -1,49 +1,32 @@
 services:
-
-  db:
-    image: postgres:16.1
-    environment:
-      POSTGRES_USER: django
-      POSTGRES_PASSWORD: django
-      POSTGRES_DB: django
-    volumes:
-      - julkalender_data:/var/lib/postgresql/data
-    ports:
-      - 127.0.0.1:5432:5432
-    networks:
-      - internal   # network internal
-
   web:
-    build: .
-    user: "${UID}:${GID}"
-    restart: always
-    entrypoint: /code/docker-entrypoint.sh
-    command: >
-      sh -c "uwsgi --ini /code/julkalender.uwsgi.ini"
+    container_name: D-Sektionen-Julkalender
+    image: registry.d-sektionen.se/julkalender:latest
+    restart: unless-stopped
+    command: uwsgi --ini /etc/uwsgi/julkalender.uwsgi.ini
     volumes:
-      - .:/code
+      # Set the paths when deploying to production.
+      - ${JULKALENDER_BASEDIR}/julkalender.uwsgi.ini:/etc/uwsgi/julkalender.uwsgi.ini
+      - ${JULKALENDER_BASEDIR}/static:/code/static
+      - ${JULKALENDER_BASEDIR}/media:/code/media
+      - ${JULKALENDER_BASEDIR}/log:/var/log/
+      - ${JULKALENDER_BASEDIR}/backup:/backup
     ports:
-      - 0.0.0.0:8002:8000
+      - 8002:8000
     environment:
-      POSTGRES_USER: django
-      POSTGRES_PASSWORD: django
-      POSTGRES_DB: django
-      POSTGRES_HOST: db
+      # Set these when deploying to production
+      POSTGRES_NAME: julkalender
+      POSTGRES_USER: julkalender
+      POSTGRES_PASSWORD: "Y7FNb2c7UmT9g89k6mad52ZGFQ"
+      POSTGRES_HOST: 172.17.0.1
+      POSTGRES_PORT: 5432
       DJANGO_SETTINGS_MODULE: app.settings_production
     env_file:
-      - ./.env
+      # Environment variables set in portainer gui.
+      - stack.env
     networks:
-      - internal   # network internal
-      - default    # network outside
-    depends_on:
-      - db
-
-volumes:
-  julkalender_data:
+      - default
 
 networks:
   default:
-    external: true
-    name: django_network
-  internal:
-    internal: true
+    driver: bridge

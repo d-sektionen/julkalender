@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'django_unused_media',
     'dbbackup',  # django-dbbackup
-    'django_cron',
+    #'django_cron',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,16 +48,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CRON_CLASSES = [
-    "julkalender.models.Backup",
-]
+#CRON_CLASSES = [
+#    "julkalender.models.Backup",
+#]
 
 ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,  "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,7 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -104,12 +103,15 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [
+    ("julkalender", os.path.join(BASE_DIR, "julkalender/static"))
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/') # 'data' is my media folder
 MEDIA_URL = '/media/'

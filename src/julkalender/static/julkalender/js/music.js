@@ -10,7 +10,9 @@ var songs = [
   "IAQs7i8lVwU",
   "173uCQT4J9s",
   "0bWJciHHUQY",
-  "CR4wkM2JYtY"
+  "CR4wkM2JYtY",
+  "qvEIo72Fn78", // Dj Santana Feliz Super Freaky Christmas Girl Vidmix
+  "h3vbvdesee8" // Let It Snow (Brainrot Edition) "Ohio, Ohio, Ohio" AI Parody cover (lyrics by notjewboi)
 ];
 
 var randomSong = Math.floor(Math.random() * songs.length);

@@ -32,7 +32,7 @@ class Door(models.Model):
 
 
     class Meta:
-      unique_together = (("year", "day"),)
+        unique_together = (("year", "day"),)
 
 @receiver(post_save, sender=Door)
 def deleting_old_image(sender, instance, **kwargs):

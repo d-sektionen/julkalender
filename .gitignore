@@ -1,6 +1,6 @@
 /media
-/static
 /backup
+src/static/
 .env
 .venv
 .vscode
